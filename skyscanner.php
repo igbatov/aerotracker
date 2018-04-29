@@ -1,4 +1,7 @@
 <?php
+/**
+ * Не работает, потому что skyscanner блокирует запросы с других доменов
+ */
 include 'transport.php';
 
 $dates = [

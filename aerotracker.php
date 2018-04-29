@@ -1,5 +1,5 @@
 <?php
-include "transport.php";
+include "cli.boostrap.php";
 
 $data = array (
   'routes' => 
@@ -50,7 +50,7 @@ try {
 }
 
 if (!$jsonResult || !$jsonResult['success']) {
-  send("Bad json. Original ".var_export($jsonResult, true));
+  send("Bad json. Original ".var_export($result, true));
 }
 
 $minPrices = reset($jsonResult['data']['min_prices']);
