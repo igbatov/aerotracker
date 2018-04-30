@@ -1,4 +1,5 @@
 <?php
+require_once 'vendor/autoload.php';
 
 // path to this file
 $path = dirname(__FILE__);
@@ -23,4 +24,4 @@ $db = new EscapeDB(new DB(
 ));
 
 $logger = new Logger($db, dirname(__FILE__), "cli.bootstrap.php");
-$model = new Model($db);
+$model = new Model($db, 7);

@@ -1,0 +1,12 @@
+{
+  "name": "igbatov/aerotracker",
+  "description": "Notify about cheap avia tickets",
+  "authors": [
+    {
+      "name": "Igor Batov"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  }
+}
