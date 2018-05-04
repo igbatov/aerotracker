@@ -1,6 +1,7 @@
 <?php
-include "transport.php";
+include "Transport.php";
 include "AeroflotTracker.php";
+ini_set('error_log', "error_log.log");
 
 $admin_email = 'igbatov@gmail.com';
 
@@ -10,6 +11,13 @@ $route_dates = [
 ];
 
 $email_routes = [
+/*
+    'igbatov@gmail.com' => [
+        'MOW_PKC' => ['2018-08-03', '2018-08-04'],
+        'PKC_MOW' => ['2018-08-12'],
+    ],
+*/
+
     'friendlyin@gmail.com' => [
         'MOW_PKC' => ['2018-08-03', '2018-08-04'],
         'PKC_MOW' => ['2018-08-12'],
@@ -26,20 +34,23 @@ $email_routes = [
         'MOW_PKC' => ['2018-08-17'],
         'PKC_MOW' => ['2018-09-02'],
     ],
+
 ];
 $minPrice = 20000;
 
 $transport = new Transport();
 $aeroflotTracker = new AeroflotTracker($transport);
-foreach ($route_dates as $route => $date) {
+foreach ($route_dates as $route => $dates) {
   $srcdst = $aeroflotTracker->keyToRoute($route);
-  $aeroflotTracker->run(
-      $srcdst['src'],
-      $srcdst['dst'],
-      $date,
-      $email_routes,
-      $admin_email,
-      $minPrice
-  );
-  sleep(2);
+  foreach ($dates as $date) {
+    $aeroflotTracker->run(
+        $srcdst['src'],
+        $srcdst['dst'],
+        $date,
+        $email_routes,
+        $admin_email,
+        $minPrice
+    );
+    sleep(2);
+  }
 }
