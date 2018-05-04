@@ -58,7 +58,7 @@ class AeroflotTracker {
     }
 
     if (!$jsonResult || !$jsonResult['success']) {
-      $this->transport->send("Bad json. Original ".var_export($jsonResult, true), $admin_email);
+      $this->transport->send("Bad json. Original ".var_export($result, true), $admin_email);
     }
 
     $minPrices = reset($jsonResult['data']['min_prices']);
